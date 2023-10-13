@@ -39,7 +39,7 @@ class Settings < BasicObject
 
     def table_exists?
       RailsAdminSettings.mongoid? || RailsAdminSettings::Setting.table_exists?
-    rescue ActiveRecord::NoDatabaseError
+    rescue ActiveRecord::ConnectionNotEstablished, ActiveRecord::NoDatabaseError
       false
     end
 
